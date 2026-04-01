@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrustLens - Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --neon-blue:#00f3ff; --neon-purple:#bc13fe; }
+    body { background-color:#050505 !important; color:#e0e0e0; }
+    h1,h2,h3,.tagline,.logo,.nav-links a,.btn { font-family:'Orbitron',sans-serif !important; text-transform:uppercase; letter-spacing:1px; }
+    .logo { text-shadow:0 0 6px var(--neon-blue),0 0 18px var(--neon-blue); color:#fff; }
+    .navbar {
+      display:flex; justify-content:space-between; align-items:center; padding:24px 60px;
+      background:rgba(0,0,0,0.82); backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(0,243,255,0.18); position:sticky; top:0; z-index:10;
+    }
+    .nav-links { list-style:none; display:flex; gap:26px; }
+    .nav-links a { color:white; text-decoration:none; font-size:0.95rem; transition:0.3s ease; }
+    .nav-links a:hover,.nav-links a.active { color:var(--neon-blue); text-shadow:0 0 8px var(--neon-blue); border-bottom:2px solid #ff9800; padding-bottom:4px; }
+    .cyber-grid {
+      position:fixed; top:0; left:0; width:100vw; height:100vh;
+      background-image:linear-gradient(rgba(0,243,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,243,255,0.07) 1px, transparent 1px);
+      background-size:40px 40px; z-index:-1; pointer-events:none;
+    }
+    .box,.result-card {
+      background:rgba(10,15,20,0.75)!important; border:1px solid var(--neon-blue)!important;
+      box-shadow:0 0 15px rgba(0,243,255,0.18), inset 0 0 20px rgba(0,243,255,0.08)!important;
+      backdrop-filter:blur(12px); border-radius:16px;
+    }
+    table { width:100%; border-collapse:collapse; color:#e0e0e0; }
+    th,td { padding:12px; border:1px solid rgba(0,243,255,0.15); text-align:left; }
+    th { color:var(--neon-blue); }
+  </style>
+</head>
+<body onload="checkAdminAccess(); loadAdminDashboard();">
+<div class="cyber-grid"></div>
+
+<header>
+  <nav class="navbar">
+    <h1 class="logo">TrustLens Admin</h1>
+    <ul class="nav-links">
+      <li><a href="admin.html" class="active">Admin</a></li>
+      <li><a href="login.html" onclick="logoutUser()">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-section">
+  <h2>Admin Dashboard</h2>
+  <p>Monitor users, reviews, and analysis results from one place.</p>
+
+  <div class="feature-boxes" style="margin-top: 30px;">
+    <div class="box"><h3>Total Users</h3><p id="totalUsers">0</p></div>
+    <div class="box"><h3>Total Reviews</h3><p id="totalReviews">0</p></div>
+    <div class="box"><h3>Total Results</h3><p id="totalResults">0</p></div>
+  </div>
+</section>
+
+<section class="page-section">
+  <h2>Registered Users</h2>
+  <div class="result-card">
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody id="usersTable"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page-section">
+  <h2>Submitted Reviews</h2>
+  <div class="result-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Review ID</th>
+          <th>User ID</th>
+          <th>Review Text</th>
+        </tr>
+      </thead>
+      <tbody id="reviewsTable"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page-section">
+  <h2>Analysis Results</h2>
+  <div class="result-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Result ID</th>
+          <th>Review ID</th>
+          <th>Sentiment</th>
+          <th>Misleading Score</th>
+          <th>Trust Score</th>
+        </tr>
+      </thead>
+      <tbody id="resultsTable"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer><p>© 2026 TrustLens | Admin Panel</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>

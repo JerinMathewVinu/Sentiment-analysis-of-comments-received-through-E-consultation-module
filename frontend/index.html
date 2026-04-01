@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrustLens - Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --neon-blue:#00f3ff; --neon-purple:#bc13fe; }
+    body { background-color:#050505 !important; color:#e0e0e0; }
+    h1,h2,h3,.tagline,.logo { font-family:'Orbitron',sans-serif !important; text-transform:uppercase; letter-spacing:2px; }
+    .logo { text-shadow:0 0 5px var(--neon-blue),0 0 15px var(--neon-blue); color:#fff; }
+    .navbar { border-bottom:1px solid rgba(0,243,255,0.2); background:rgba(0,0,0,0.8)!important; backdrop-filter:blur(10px); }
+    .nav-links a:hover,.nav-links a.active { color:var(--neon-blue)!important; text-shadow:0 0 8px var(--neon-blue); }
+    .hero-card {
+      background:rgba(10,15,20,0.7)!important; border:1px solid var(--neon-blue)!important;
+      box-shadow:0 0 15px rgba(0,243,255,0.2), inset 0 0 20px rgba(0,243,255,0.1)!important;
+      backdrop-filter:blur(12px); position:relative; overflow:hidden; border-radius:12px;
+    }
+    .hero-card::before {
+      content:''; position:absolute; top:0; left:-100%; width:100%; height:2px;
+      background:linear-gradient(90deg,transparent,var(--neon-blue)); animation:scanline 2.5s linear infinite;
+    }
+    @keyframes scanline {
+      0%{left:-100%;top:0;} 50%{left:100%;top:0;} 50.1%{left:100%;top:100%;} 100%{left:-100%;top:100%;}
+    }
+    .btn {
+      background:rgba(0,243,255,0.1)!important; border:1px solid var(--neon-blue)!important; color:var(--neon-blue)!important;
+      box-shadow:0 0 10px rgba(0,243,255,0.2); font-family:'Orbitron',sans-serif; text-transform:uppercase; transition:all .3s ease;
+    }
+    .btn:hover { background:var(--neon-blue)!important; color:#000!important; box-shadow:0 0 20px var(--neon-blue),0 0 40px var(--neon-blue); }
+    .secondary-btn {
+      border-color:var(--neon-purple)!important; color:var(--neon-purple)!important; background:rgba(188,19,254,0.1)!important;
+      box-shadow:0 0 10px rgba(188,19,254,0.2);
+    }
+    .secondary-btn:hover { background:var(--neon-purple)!important; color:#fff!important; box-shadow:0 0 20px var(--neon-purple),0 0 40px var(--neon-purple); }
+    .box,.stat-card {
+      background:rgba(15,15,20,0.8)!important; border:1px solid rgba(255,255,255,0.05)!important;
+      border-bottom:2px solid var(--neon-purple)!important; transition:transform .3s, box-shadow .3s;
+    }
+    .box:hover,.stat-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(188,19,254,0.3); border-color:var(--neon-purple)!important; }
+    .icon { font-size:2.8rem; filter:drop-shadow(0 0 8px var(--neon-blue)); }
+    .cyber-grid {
+      position:fixed; top:0; left:0; width:100vw; height:100vh;
+      background-image:linear-gradient(rgba(0,243,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,243,255,0.07) 1px, transparent 1px);
+      background-size:40px 40px; z-index:-1; pointer-events:none;
+    }
+    .result.positive { color:#0f0; text-shadow:0 0 5px #0f0; font-family:monospace; }
+    .result.score { color:var(--neon-blue); text-shadow:0 0 5px var(--neon-blue); font-family:monospace; }
+  </style>
+</head>
+<body>
+  <div class="cyber-grid"></div>
+
+  <div class="bg-animation">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">TrustLens</h1>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero fade-in">
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="tagline">AI-Powered Review Intelligence</p>
+        <h2>Intelligent Comment Sentiment & Misleading Feedback Analyzer</h2>
+        <p>
+          TrustLens helps identify genuine reviews, analyze sentiment,
+          and detect misleading feedback using smart analytics and AI-based trust scoring.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="login.html" class="btn">Login</a>
+          <a href="register.html" class="btn">Register</a>
+          <a href="about.html" class="btn secondary-btn">Learn More</a>
+        </div>
+      </div>
+
+      <div class="hero-card floating">
+        <div class="card-glow"></div>
+        <h3><span style="color:var(--neon-blue);">[ LIVE AI FEED ]</span></h3>
+        <p style="font-family: monospace; color: #aaa;"><strong>> ANALYZING_INPUT:</strong> “Amazing product! Totally worth the money.”</p>
+        <div class="result positive">> SENTIMENT_MATCH: Positive</div>
+        <div class="result score">> SYSTEM_TRUST_SCORE: 92%</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features fade-in">
+    <h2>Key Features</h2>
+    <p class="section-subtitle">Powerful tools designed to make review analysis smarter and more reliable.</p>
+
+    <div class="feature-boxes">
+      <div class="box">
+        <div class="icon">💬</div>
+        <h3>Sentiment Analysis</h3>
+        <p>Classifies comments into positive, negative, or neutral using intelligent text understanding.</p>
+      </div>
+
+      <div class="box">
+        <div class="icon">🛡️</div>
+        <h3>Fake Review Detection</h3>
+        <p>Identifies suspicious and misleading review patterns for better decision-making.</p>
+      </div>
+
+      <div class="box">
+        <div class="icon">📊</div>
+        <h3>Trust Score</h3>
+        <p>Calculates a review reliability score to help users quickly judge authenticity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats fade-in">
+    <div class="stat-card"><h3>10K+</h3><p>Reviews Analyzed</p></div>
+    <div class="stat-card"><h3>95%</h3><p>Detection Accuracy</p></div>
+    <div class="stat-card"><h3>24/7</h3><p>AI Monitoring</p></div>
+  </section>
+
+  <footer><p>© 2026 TrustLens | Java Project</p></footer>
+  <script src="js/script.js"></script>
+</body>
+</html>

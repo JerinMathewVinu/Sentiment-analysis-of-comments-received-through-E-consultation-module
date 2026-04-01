@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - TrustLens</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --neon-blue: #00f3ff;
+      --neon-purple: #bc13fe;
+      --dark-bg: #050505;
+      --card-bg: rgba(10, 15, 20, 0.75);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .tagline, .logo, .nav-links a, .btn {
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ---------------- CYBER GRID ---------------- */
+    .cyber-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image:
+        linear-gradient(rgba(0, 243, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* ---------------- NAVBAR ---------------- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 60px;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 243, 255, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      color: #fff;
+      font-size: 2rem;
+      text-shadow: 0 0 6px var(--neon-blue), 0 0 18px var(--neon-blue);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--neon-blue);
+      text-shadow: 0 0 8px var(--neon-blue);
+      border-bottom: 2px solid #ff9800;
+      padding-bottom: 4px;
+    }
+
+    /* ---------------- LOGIN SECTION ---------------- */
+    .auth-section {
+      min-height: calc(100vh - 160px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 520px;
+      background: var(--card-bg);
+      border: 1px solid var(--neon-blue);
+      box-shadow:
+        0 0 15px rgba(0, 243, 255, 0.18),
+        inset 0 0 20px rgba(0, 243, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 45px 35px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+      animation: scanline 2.5s linear infinite;
+    }
+
+    @keyframes scanline {
+      0% { left: -100%; top: 0; }
+      50% { left: 100%; top: 0; }
+      50.1% { left: 100%; top: 100%; }
+      100% { left: -100%; top: 100%; }
+    }
+
+    .login-title {
+      text-align: center;
+      color: var(--neon-blue);
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+      text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+    }
+
+    .login-subtitle {
+      text-align: center;
+      font-family: monospace;
+      color: #a7a7a7;
+      margin-bottom: 28px;
+      font-size: 1rem;
+    }
+
+    .input-group {
+      margin-bottom: 22px;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .cyber-input {
+      width: 100%;
+      padding: 15px 14px;
+      border: 1px solid rgba(0, 243, 255, 0.35);
+      border-radius: 10px;
+      outline: none;
+      background: rgba(0, 0, 0, 0.55);
+      color: var(--neon-blue);
+      font-family: monospace;
+      font-size: 1rem;
+      transition: 0.3s ease;
+    }
+
+    .cyber-input::placeholder {
+      color: rgba(0, 243, 255, 0.45);
+    }
+
+    .cyber-input:focus {
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid var(--neon-blue);
+      background: rgba(0, 243, 255, 0.1);
+      color: var(--neon-blue);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.15);
+    }
+
+    .btn:hover {
+      background: var(--neon-blue);
+      color: black;
+      box-shadow: 0 0 18px var(--neon-blue), 0 0 36px rgba(0, 243, 255, 0.4);
+    }
+
+    .auth-link {
+      margin-top: 22px;
+      text-align: center;
+      color: #a7a7a7;
+      font-size: 0.95rem;
+    }
+
+    .auth-link a {
+      color: var(--neon-blue);
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(0, 243, 255, 0.6);
+    }
+
+    .auth-link a:hover {
+      color: var(--neon-purple);
+      text-shadow: 0 0 6px rgba(188, 19, 254, 0.6);
+    }
+
+    .admin-note {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: #bdbdbd;
+      font-family: monospace;
+    }
+
+    .admin-note span {
+      color: var(--neon-blue);
+    }
+
+    /* ---------------- FOOTER ---------------- */
+    footer {
+      text-align: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #ddd;
+      border-top: 1px solid rgba(0, 243, 255, 0.15);
+      font-size: 0.95rem;
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 900px) {
+      .navbar {
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .auth-container {
+        padding: 35px 22px;
+      }
+
+      .logo {
+        font-size: 1.7rem;
+      }
+
+      .login-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cyber-grid"></div>
+
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">TrustLens</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html" class="active">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="auth-section">
+    <div class="auth-container">
+      <h2 class="login-title">[ System Login ]</h2>
+      <p class="login-subtitle">&gt; Awaiting credentials...</p>
+
+      <!-- IMPORTANT: calls your JS function -->
+      <form onsubmit="loginUser(event)">
+        <div class="input-group">
+          <label for="loginEmail">&gt; Identifier</label>
+          <input
+            type="text"
+            id="loginEmail"
+            class="cyber-input"
+            placeholder="Enter email or admin"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="loginPassword">&gt; Passkey</label>
+          <input
+            type="password"
+            id="loginPassword"
+            class="cyber-input"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn">Authenticate</button>
+
+        <p class="auth-link">
+          Unregistered?
+          <a href="register.html">Initialize New User</a>
+        </p>
+
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 TrustLens | Java Project</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
