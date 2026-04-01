@@ -1,0 +1,13 @@
+com/trustlens/backend/UserRepository.class
+com/trustlens/backend/ReviewRequest.class
+com/trustlens/backend/AnalysisResultRepository.class
+com/trustlens/backend/ReviewController.class
+com/trustlens/backend/BackendApplication.class
+com/trustlens/backend/AdminController.class
+com/trustlens/backend/Review.class
+com/trustlens/backend/User.class
+com/trustlens/backend/AnalysisResult.class
+com/trustlens/backend/ReviewService.class
+com/trustlens/backend/AuthController.class
+com/trustlens/backend/ReviewRepository.class
+com/trustlens/backend/ReviewResponse.class
